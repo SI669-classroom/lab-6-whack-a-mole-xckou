@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { DataProvider } from '../../provider/data/data';
 import { Storage } from '@ionic/storage';
@@ -15,7 +15,7 @@ import { Storage } from '@ionic/storage';
   selector: 'page-leaderboard',
   templateUrl: 'leaderboard.html',
 })
-export class LeaderboardPage {
+export class LeaderboardPage{
 
   score: number;
   scoreList: any[] = [];
@@ -29,11 +29,11 @@ export class LeaderboardPage {
     this.score = this.navParams.get('score');
   }
 
-  ionViewDidLoad() {
+  ionViewDidLoad(){
     console.log('ionViewDidLoad LeaderboardPage');
     // Platform.ready isn't required in the new Ionic
     this.platform.ready().then(() => {
-      /*Storage get*/.then((result) => {
+      this.storage.get('leaderboard').then((result) => {
         let res;
         if(!result) {
           res = []
@@ -56,7 +56,7 @@ export class LeaderboardPage {
           }
         })
 
-        /*Storage set*/.('leaderboard', JSON.stringify(res));
+        this.storage.set('leaderboard', JSON.stringify(res));
       })
     })
   }

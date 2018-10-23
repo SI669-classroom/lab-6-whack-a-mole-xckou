@@ -1,5 +1,6 @@
 import { NativeAudio } from '@ionic-native/native-audio';
 
+
 export class MoleHole {
     //moleState
     //0: hid
